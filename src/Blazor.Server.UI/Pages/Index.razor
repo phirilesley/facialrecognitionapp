@@ -1,0 +1,37 @@
+@page "/"
+@using Blazor.Server.UI.Pages.Visitors
+@using MudBlazor.Utilities
+@using Blazor.Server.UI.Models
+
+<PageTitle>@Title</PageTitle>
+<MudContainer MaxWidth="MaxWidth.Large">
+    <div class="@ContentClassNames">
+        <div class="lp-app-grid">
+        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+           
+            <CameraReaderComponent />
+       
+        </MudStack>
+       </div>
+    </div>
+
+    
+</MudContainer>
+
+@code {
+    public string Title { get; set; } = "Dashboard";
+    private bool IsMobile = false;
+    protected string ContentClassNames =>
+        new CssBuilder("flex-grow-1 flex-shrink-1")
+            .AddClass("pa-5", !IsMobile)
+            .AddClass("px-8", IsMobile)
+            .Build();
+    private bool expansionPanel1 = true;
+    private double sliderValue = 50.0;
+ 
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+}
